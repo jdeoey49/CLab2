@@ -1,0 +1,50 @@
+//Computing 2 Lab1
+#include<iostream>
+#include<string>
+using namespace std;
+class GradeBook
+{
+public:
+	void setCourseName(std::string);
+	void setInstructorName(string);
+	string getInstructorName() const;
+	string getCourseName() const;
+	void displayMessage() const;
+private:
+	string course_name_;
+	string instructor__name_;
+};
+void GradeBook::setCourseName(string course)
+{
+	course_name_ = course;
+}
+void GradeBook::setInstructorName(string inname)
+{
+	instructor__name_ = inname;
+}
+string GradeBook::getInstructorName() const
+{
+	return instructor__name_;
+}
+string GradeBook::getCourseName() const
+{
+	return course_name_;
+}
+void GradeBook::displayMessage() const
+{
+	cout << "Welcome to the grade book for:" << getCourseName()
+		<< "!" << endl;
+	cout << "This course is presented by:" << getInstructorName()
+		<< "." << endl;
+}
+int main()
+{
+	GradeBook grade_book;
+	grade_book.setCourseName("Computing 2");
+	grade_book.setInstructorName("Joey Chuang");
+	grade_book.displayMessage();
+	grade_book.setCourseName("EE");
+	grade_book.setInstructorName("Tzu-Yi Chuang");
+	grade_book.displayMessage();
+	return 0;
+}

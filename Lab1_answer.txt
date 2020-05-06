@@ -1,0 +1,181 @@
+// GradeBook.cpp
+// Definitions for class GradeBook incl. driver.
+
+// This is a solution to a somewhat expandet set of problems that were 
+// formulated in class as follows:
+// 
+// Add another variable no_students_ of type int to the class (private data member)
+// Provide the proper set and get functions for this variable.
+// Add another statement to displayMessage to output the number of students.
+//
+// Implement a default constructor for the class GradeBook
+// Set no_students_ = 0 as an intial value.
+// Implement a constructor that sets course_name_, instructor_name, and no_students_ using input arguments
+//   a.within the body of the constructor
+//   b. using an initialization list
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// GradeBook class definition
+class GradeBook
+{
+public:
+	
+	//default constructor
+	GradeBook();
+
+	//constructor with two input arguments
+	GradeBook(string course_name, int no_students);
+
+	//constructor with two input arguments
+	GradeBook(string c_name, string i_name, int no_students);
+
+	// function to set the course name
+	void setCourseName( string name );
+
+	// function to retrieve the course name
+	string getCourseName() const;
+
+	// function to set the course name
+	void setInstructorName(string name);
+
+	// function to retrieve the course name
+	string getInstructorName() const;
+
+	// function to set number students
+	void setNumberStudents(int no_students);
+
+	// function to retrieve the course name
+	int getNumberStudents() const;
+
+
+	// display a welcome message and the instructor's name
+	void displayMessage() const;
+
+private:
+   string course_name_; // course name for this GradeBook
+   string instructor_name_; // instructor name for this GradeBook
+   int no_students_;
+}; // end class GradeBook  
+
+
+//default constructor
+GradeBook::GradeBook()
+{
+	no_students_ = 0;           
+}
+
+//constructor with two input arguments
+GradeBook::GradeBook(string course_name, int no_students)
+{
+	//course_name_ = course_name;
+	//no_students_ = no_students;
+	setCourseName(course_name);
+	setNumberStudents(no_students);
+}
+
+//constructor with two input arguments
+GradeBook::GradeBook(string c_name, string i_name, int n_st) :
+	course_name_(c_name), instructor_name_(i_name), no_students_(n_st)
+{
+	//setCourseName(c_name);
+	//setInstructorName(i_name);
+	//setNumberStudents(n_st);
+}
+
+
+
+// function to set the course name
+void GradeBook::setCourseName( string name )
+{
+	course_name_ = name; // store the course name
+} // end function setCourseName
+
+// function to retrieve the course name
+string GradeBook::getCourseName() const
+{
+	return course_name_;
+} // end function getCourseName
+
+
+// function to set the course name
+void GradeBook::setInstructorName(string name)
+{
+	instructor_name_ = name; // store the course name
+} // end function setCourseName
+
+// function to retrieve the course name
+string GradeBook::getInstructorName() const
+{
+	return instructor_name_;
+} // end function getCourseName
+
+  // function to set number students
+void GradeBook::setNumberStudents(int no_students)
+{
+	no_students_ = no_students;
+}
+
+// function to retrieve the course name
+int GradeBook::getNumberStudents() const
+{
+	return no_students_;
+}
+
+
+// display a welcome message and the instructor's name
+void GradeBook::displayMessage() const
+{
+	// display a welcome message containing the course name
+	cout << "Welcome to the grade book for " << getCourseName() << "!" << endl;
+	cout << "This course is presented by " << getInstructorName() << "!" << endl;
+	cout << "There are: " << getNumberStudents() << " students" << endl;
+	cout << endl;
+
+} // end function displayMessage
+
+
+
+// function main begins program execution
+int main()
+{
+   	// create a GradeBook object; pass a course name and instructor name
+   	GradeBook grade_book;
+	GradeBook grade_book2("Computing", "Smith", 20);
+   	
+	// display welcome message
+	grade_book.displayMessage();
+	grade_book2.displayMessage();
+
+   	grade_book.setCourseName( "Computing 2 - Programming Labs" );
+	grade_book.setInstructorName("Norbert Strobel");
+	grade_book.setNumberStudents(20);
+   	
+	// display welcome message
+	grade_book.displayMessage();
+ 
+ 	grade_book.setCourseName( "Informatik 2 - Uebungen" );
+	grade_book.setInstructorName("Florian Spiess");
+
+    // display welcome message
+   	grade_book.displayMessage(); 
+
+	grade_book = GradeBook("Test", 29);
+	// display welcome message
+	grade_book.displayMessage();
+
+} // end main
+
+
+
+
+/**************************************************************************
+ * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *
+ * Pearson Education, Inc. All Rights Reserved.                           *
+ *                                                                        *
+ * With modifications by N. Strobel, 2019                                 *
+ *                                                                        *                  
+ **************************************************************************/
+
